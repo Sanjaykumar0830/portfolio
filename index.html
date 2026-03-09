@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +14,12 @@ font-family:Arial, Helvetica, sans-serif;
 margin:0;
 background:#f4f6ff;
 color:#111;
+transition:0.3s;
+}
+
+.dark{
+background:#0f172a;
+color:#eee;
 }
 
 .container{
@@ -28,14 +33,13 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 0;
-border-bottom:1px solid #ddd;
+border-bottom:1px solid #ccc;
 }
 
 nav a{
 margin-left:15px;
 text-decoration:none;
-color:#333;
-font-weight:500;
+color:inherit;
 }
 
 .hero{
@@ -52,9 +56,13 @@ border-radius:12px;
 box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
+.dark .card{
+background:#1e293b;
+}
+
 h1{
 margin:0;
-font-size:36px;
+font-size:34px;
 }
 
 .btn{
@@ -66,12 +74,13 @@ margin-top:10px;
 margin-right:8px;
 text-decoration:none;
 font-weight:600;
+cursor:pointer;
+background:#f5f5f5;
+color:#0a35ff;
 }
 
-.btn.primary{
-background:linear-gradient(45deg,#2b63ff,#00b894);
-color:white;
-border:none;
+.btn:hover{
+background:#e8e8e8;
 }
 
 .chips{
@@ -80,15 +89,15 @@ margin-top:10px;
 
 .chip{
 display:inline-block;
-border:1px solid #ddd;
-padding:5px 10px;
+border:1px solid #ccc;
+padding:6px 12px;
 border-radius:20px;
 font-size:12px;
-margin:4px;
+margin:5px;
 }
 
 .section{
-margin-top:30px;
+margin-top:40px;
 }
 
 .project{
@@ -99,10 +108,101 @@ margin-top:15px;
 box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
+.dark .project{
+background:#1e293b;
+}
+
 .footer{
-margin-top:40px;
+margin-top:50px;
 text-align:center;
 color:#777;
+}
+
+.switch{
+position:relative;
+display:inline-block;
+width:60px;
+height:28px;
+margin-left:10px;
+}
+
+.switch input{
+display:none;
+}
+
+.slider{
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:#ccc;
+border-radius:34px;
+transition:.4s;
+}
+
+.slider:before{
+position:absolute;
+content:"";
+height:22px;
+width:22px;
+left:4px;
+bottom:3px;
+background:white;
+border-radius:50%;
+transition:.4s;
+}
+
+input:checked + .slider{
+background:#2b63ff;
+}
+
+input:checked + .slider:before{
+transform:translateX(28px);
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:6px;
+border:none;
+background:#eee;
+font-size:16px;
+}
+
+.dark .contact-form input,
+.dark .contact-form textarea{
+background:#334155;
+color:white;
+}
+
+.contact-form button{
+margin-top:15px;
+padding:14px 30px;
+background:#0b3a82;
+border:none;
+color:white;
+font-size:18px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.edu-card{
+background:white;
+padding:20px;
+border-radius:14px;
+margin-top:15px;
+border:1px solid #ddd;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.dark .edu-card{
+background:#1e293b;
 }
 
 </style>
@@ -117,11 +217,19 @@ color:#777;
 <h2>Sanjaykumar M</h2>
 
 <div>
+
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
-<a href="#experience">Experience</a>
+<a href="#internships">Experience</a>
 <a href="#projects">Projects</a>
+<a href="#education">Education</a>
 <a href="#contact">Contact</a>
+
+<label class="switch">
+<input type="checkbox" onclick="toggleTheme()">
+<span class="slider"></span>
+</label>
+
 </div>
 
 </nav>
@@ -134,11 +242,11 @@ color:#777;
 <h1>Java & Full Stack Developer</h1>
 
 <p>
-Motivated Computer Science Engineering student skilled in Java, SQL, HTML, CSS and JavaScript.
-Interested in building real-world web applications and learning modern software technologies.
+Computer Science Engineering student passionate about building software applications
+and solving real-world problems using Java, Web Technologies and Machine Learning.
 </p>
 
-<a class="btn primary" href="#contact">Contact Me</a>
+<a class="btn" href="#contact">Contact Me</a>
 
 <a class="btn" href="SANJAYKUMAR_M_Resume.pdf" download>
 Download Resume
@@ -156,21 +264,10 @@ Download Resume
 <h3>Quick Info</h3>
 
 <p>
-📍 Salem, Tamil Nadu<br>
-📞 +91 9342296886<br>
+📍 Salem, Tamil Nadu <br>
+📞 9342296886 <br>
 📧 sanjaykumar301104@gmail.com
 </p>
-
-<div class="chips">
-
-<span class="chip">Java</span>
-<span class="chip">SQL</span>
-<span class="chip">HTML</span>
-<span class="chip">CSS</span>
-<span class="chip">JavaScript</span>
-<span class="chip">Git</span>
-
-</div>
 
 </div>
 
@@ -182,9 +279,9 @@ Download Resume
 <h2>About</h2>
 
 <p>
-Computer Science Engineering student with strong knowledge in programming and web development.
-Passionate about building software solutions and continuously improving technical skills through
-projects, internships, and online learning platforms.
+Motivated Computer Science Engineering student with strong knowledge in Java,
+SQL and Web Development. Passionate about learning modern technologies and
+building efficient software solutions through projects and internships.
 </p>
 
 </section>
@@ -192,21 +289,23 @@ projects, internships, and online learning platforms.
 
 <section class="section" id="skills">
 
-<h2>Skills</h2>
+<h2>Key Skills</h2>
 
 <div class="chips">
 
 <span class="chip">Java</span>
-<span class="chip">Python</span>
 <span class="chip">SQL</span>
 <span class="chip">HTML</span>
 <span class="chip">CSS</span>
 <span class="chip">JavaScript</span>
-<span class="chip">Machine Learning</span>
-<span class="chip">Data Analysis</span>
-<span class="chip">Git</span>
-<span class="chip">VS Code</span>
+<span class="chip">Data Structures</span>
+<span class="chip">Python</span>
+<span class="chip">Linux</span>
+<span class="chip">AWS</span>
+<span class="chip">GitHub</span>
+<span class="chip">Visual Studio Code</span>
 <span class="chip">Eclipse</span>
+<span class="chip">Problem Solving</span>
 
 </div>
 
@@ -215,18 +314,18 @@ projects, internships, and online learning platforms.
 
 <section class="section" id="experience">
 
-<h2>Experience</h2>
+<h2>Internship</h2>
 
 <div class="project">
 
-<h3>Junior Java Developer — Emglitz Technologies (Internship)</h3>
+<h3>Core Java  — Emglitz Technologies </h3>
 
 <p>
 Jun 2025 – Jul 2025 | Salem, Tamil Nadu
 </p>
 
 <p>
-Worked as a Junior Java Developer intern where I gained practical experience in Java programming
+where I gained practical experience in Java programming
 and application development. Assisted in developing small Java-based modules and improved my
 understanding of object-oriented programming, debugging, and software development practices.
 </p>
@@ -236,7 +335,7 @@ understanding of object-oriented programming, debugging, and software developmen
 
 <div class="project">
 
-<h3>Full Stack Developer — Emglitz Technologies (Internship)</h3>
+<h3>Full Stack Development — Emglitz Technologies </h3>
 
 <p>
 Dec 2024 – Jan 2025 | Salem, Tamil Nadu
@@ -255,10 +354,10 @@ workflow practices.
 </section>
 
 
+
 <section class="section" id="projects">
 
 <h2>Projects</h2>
-
 
 <div class="project">
 
@@ -267,9 +366,8 @@ workflow practices.
 <p>
 Developed a machine learning based movie recommendation system that suggests movies
 based on user preferences and ratings. Implemented collaborative filtering and
-content-based filtering algorithms using Python libraries such as Pandas and
-Scikit-Learn. The system analyzes user behavior and movie datasets to provide
-personalized recommendations.
+content-based filtering algorithms using Python libraries such as Pandas and Scikit-Learn.
+The system analyzes user behavior and movie datasets to provide personalized recommendations.
 </p>
 
 <b>Skills:</b> Python, Machine Learning, Pandas, Data Analysis, Scikit-Learn
@@ -283,9 +381,8 @@ personalized recommendations.
 
 <p>
 Developed an AI powered household management system designed to reduce food waste.
-The application includes features such as smart inventory tracking, expiry alerts,
-and recipe recommendations. Integrated OCR technology for receipt scanning and
-explored IoT concepts for real-time pantry monitoring.
+Features include smart inventory tracking, expiry alerts and recipe recommendations.
+Integrated OCR technology for receipt scanning and explored IoT concepts.
 </p>
 
 <b>Skills:</b> Python, HTML, Web Development, Problem Solving
@@ -299,39 +396,80 @@ explored IoT concepts for real-time pantry monitoring.
 
 <p>
 Built a responsive web-based task management application that allows users to add,
-edit, delete, and mark tasks as completed. The application focuses on simplicity,
-clean user interface design, and improved productivity for managing daily activities.
+edit, delete and mark tasks as completed with a clean user interface.
 </p>
 
 <b>Skills:</b> HTML, CSS, JavaScript, Responsive Web Design
 
 </div>
 
+</section>
+<!-- Education Section -->
+
+<section class="grid" id="education">
+
+<div class="card col-12">
+
+<h2>Education</h2>
+
+<div class="timeline">
+
+<div class="item">
+<div class="item-top">
+<div class="item-title">
+B.E — Computer Science and Engineering  
+Muthayammal Engineering College (Autonomous), Namakkal
+</div>
+<div class="item-meta">2022 – 2026 • 82%</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-top">
+<div class="item-title">
+HSE — Government Higher Secondary School
+</div>
+<div class="item-meta">2020 – 2022 • 81.3%</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-top">
+<div class="item-title">
+SSLC — Government High School
+</div>
+<div class="item-meta">2018 – 2020 • 84%</div>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-
 <section class="section" id="contact">
 
-<h2>Contact</h2>
+<h2 style="text-align:center;color:#0b3a82;font-size:40px;">Contact Me</h2>
+<p style="text-align:center;">Get In Touch</p>
 
-<div class="chips">
+<div class="contact-form">
 
-<a class="chip" href="mailto:sanjaykumar301104@gmail.com">Email</a>
+<form onsubmit="sendMessage(event)">
 
-<a class="chip" href="tel:+919342296886">Phone</a>
+<input type="text" placeholder="Name" required>
 
-<a class="chip" href="https://www.linkedin.com/in/sanjaykumar-m-548583269" target="_blank">
-LinkedIn
-</a>
+<input type="email" placeholder="Email" required>
 
-<a class="chip" href="https://github.com/Sanjaykumar0830" target="_blank">
-GitHub
-</a>
+<input type="text" placeholder="Number" required>
 
-<a class="chip" href="https://www.codechef.com/users/sanjay_sg_0830" target="_blank">
-CodeChef
-</a>
+<textarea placeholder="Message" rows="5" required></textarea>
+
+<center>
+<button type="submit">Send Message</button>
+</center>
+
+</form>
 
 </div>
 
@@ -340,7 +478,7 @@ CodeChef
 
 <div class="footer">
 
-© 2026 Sanjaykumar M — Developer Portfolio
+Thanks for visiting and happy coding!
 
 </div>
 
@@ -352,6 +490,15 @@ CodeChef
 function copyEmail(){
 navigator.clipboard.writeText("sanjaykumar301104@gmail.com");
 alert("Email copied!");
+}
+
+function toggleTheme(){
+document.body.classList.toggle("dark");
+}
+
+function sendMessage(e){
+e.preventDefault();
+alert("Message Sent Successfully!");
 }
 
 </script>
